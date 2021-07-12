@@ -1,0 +1,363 @@
+.image-flipper {
+  position: relative;
+  margin-top: 1rem;
+}
+
+.bp3-overlay {
+  .image-flipper {
+    z-index: 20;
+    margin: auto;
+    width: fit-content;
+    margin-top: 3%;
+    .no-flipper-image-container,
+    .flipper-image {
+      height: 80vh;
+      width: 80vw;
+      text-align: center;
+      .image-flipper-image,
+      svg {
+        height: 100%;
+        max-width: unset;
+        max-height: unset;
+        min-height: unset;
+      }
+    }
+  }
+}
+
+.desktop-only {
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+}
+
+.image-jsx {
+  overflow: hidden;
+}
+
+.image-flipper-image {
+  margin: auto;
+  max-width: 100%;
+  max-height: 650px;
+  min-height: 200px;
+}
+
+.image-flipper-left {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  bottom: -5px;
+  background-color: rgba(0, 0, 0, 0.5);
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+}
+
+.image-flipper-right {
+  position: absolute;
+  top: -5px;
+  bottom: -5px;
+  right: -5px;
+  background-color: rgba(0, 0, 0, 0.5);
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+}
+
+.no-flipper-image-container {
+  background: $panel_light_gray;
+  img {
+    opacity: 0.4;
+  }
+  p {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 20% 1rem 0;
+    line-height: 2.4rem;
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+}
+
+.photos-footer {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  label {
+    font-weight: normal;
+  }
+  span {
+    font-weight: bold;
+    font-size: 1.3rem;
+  }
+  .bp3-popover-wrapper {
+    display: inline;
+  }
+}
+
+.image-show-menu-target {
+  position: absolute;
+  margin-top: 0.2rem;
+}
+
+.image-show-menu-popover {
+  .bp3-popover-content {
+    padding: 0;
+  }
+}
+
+.image-show-menu {
+  max-width: 25rem;
+  .hide-single-image-section {
+    padding: 1rem;
+    line-height: 2.5rem;
+    align-content: center;
+  }
+  p {
+    display: inline;
+  }
+  .shown-in-map-details {
+    padding: 1rem;
+    background: $lighter_gray;
+    &.shown {
+      cursor: pointer;
+      &:hover {
+        background: $light_gray;
+      }
+    }
+    p {
+      font-weight: bold;
+    }
+  }
+  .fb-toggle-button {
+    vertical-align: top;
+    margin-top: 1.5rem;
+  }
+  .hide-single-image-section {
+    .content {
+      margin: auto;
+      width: fit-content;
+    }
+  }
+  button {
+    margin: 0.5rem;
+    float: none;
+    line-height: 1.5rem;
+  }
+  .header-label {
+    display: block;
+    margin: auto !important;
+    width: fit-content;
+  }
+  .toggle-label {
+    margin: 1rem;
+    width: 50%;
+  }
+}
+
+.photos-footer,
+.image-show-menu {
+  i {
+    margin: 0.25rem;
+    background: none !important;
+    &.green {
+      color: $green;
+    }
+    &.gray {
+      color: $medium_gray;
+    }
+  }
+}
+
+.this-image-section {
+  margin: 2rem;
+  .content {
+    display: inline;
+    input {
+      margin: 0.5rem;
+      height: 2rem;
+      width: 3rem;
+    }
+  }
+  p {
+    display: inline;
+    margin: 0;
+  }
+  button {
+    margin: 0.5rem;
+    vertical-align: middle;
+    float: none;
+  }
+}
+
+.newer-older-images-section {
+  margin: 2rem;
+  i {
+    margin: 0.25rem;
+  }
+  p {
+    display: inline;
+  }
+  .buttons {
+    display: inline;
+  }
+  button {
+    margin: 0.5rem;
+    vertical-align: middle;
+    float: none;
+  }
+}
+
+.image-metadata {
+  display: flex;
+  label {
+    margin-top: 0 !important;
+    margin-left: 1rem;
+    margin-right: 0.5rem;
+  }
+}
+
+.image-created-at {
+  margin-left: 2rem;
+  span {
+    white-space: nowrap;
+  }
+  label {
+    margin-top: 0 !important;
+    margin-right: 0.5rem;
+  }
+}
+
+.photos {
+  .farmware-button {
+    position: relative!important;
+    bottom: 3rem;
+    height: 0px;
+    float: right!important;
+  }
+  .bp3-slider {
+    margin-left: 2rem;
+    width: 90%;
+  }
+}
+
+.camera-calibration,
+.weed-detector {
+  .farmware-button {
+    position: relative;
+    top: 0rem;
+    z-index: 9;
+    height: 0px;
+    float: right;
+  }
+  .simple-camera-calibration-checkbox {
+    display: inline-block;
+    p {
+      display: inline-block;
+      margin: 0;
+      margin-top: 5rem;
+    }
+    svg {
+      position: absolute;
+      top: 0;
+      background: $black;
+    }
+    input {
+      float: left;
+      margin-right: 1rem;
+    }
+  }
+  .image-workspace {
+    .fb-button.green {
+      margin-top: 1rem;
+    }
+    .bp3-slider {
+      width: 95%;
+      margin-left: 1rem;
+    }
+  }
+  p {
+    margin: 1.5rem;
+    font-size: 1.2rem;
+    font-style: italic;
+  }
+  .bp3-popover-wrapper {
+    display: inline;
+    margin-left: 0.5rem;
+    &.input-error-wrapper {
+      display: block;
+    }
+  }
+  .filter-search {
+    .bp3-popover-wrapper {
+      display: inline;
+      margin-left: 0;
+    }
+  }
+  .camera-calibration-config {
+    label {
+      display: inline;
+    }
+    .input {
+      margin-top: 0.5rem;
+      margin-right: 0.25rem;
+    }
+    .camera-config-number-box {
+      margin-top: 1rem;
+    }
+    .dropdown-camera-calibration-config {
+      margin-top: 2rem;
+      margin-left: 1.5rem;
+      margin-right: 1.5rem;
+      .filter-search {
+        margin-top: 0.5rem;
+        margin-right: 0.75rem;
+      }
+    }
+    .config-results {
+      min-height: 8rem;
+      .camera-config-number-box {
+        position: absolute;
+        bottom: 0;
+        width: 85%;
+      }
+    }
+  }
+}
+
+.boolean-camera-calibration-config {
+  input[type=checkbox] {
+    display: block;
+    float: left;
+    margin-right: 1rem;
+  }
+  .bp3-popover-wrapper {
+    display: inline;
+    margin: 0.5rem;
+  }
+}
+
+.farmware-button {
+  div {
+    float: right;
+  }
+  p {
+    float: right;
+    margin-top: 0.75rem;
+    margin-right: 1rem;
+    color: $medium_gray;
+  }
+}
+
+.index-indicator {
+  position: absolute;
+  top: 3rem;
+  bottom: 0;
+  right: 0;
+  background: $white;
+  height: 3px;
+}

@@ -1,0 +1,99 @@
+import React from "react";
+import { DropDownItem, Row, Col, FBSelect } from "../../ui";
+import {
+  CameraSelectionProps, CameraSelectionState,
+} from "./interfaces";
+import { error } from "../../toast/toast";
+import { UserEnv } from "../../devices/interfaces";
+import { t } from "../../i18next_wrapper";
+import { Content, ToolTips, DeviceSetting } from "../../constants";
+import { Highlight } from "../../settings/maybe_highlight";
+import { getModifiedClassNameSpecifyDefault } from "../../settings/default_values";
+
+/** Check if the camera has been disabled. */
+export const cameraDisabled = (env: UserEnv): boolean =>
+  parseCameraSelection(env) === Camera.NONE;
+
+/** Check if the camera has been calibrated. */
+export const cameraCalibrated = (env: UserEnv): boolean =>
+  parseFloat("" + env.CAMERA_CALIBRATION_coord_scale) > 0;
+
+/** `disabled` and `title` props for buttons with actions that use the camera. */
+export const cameraBtnProps = (env: UserEnv) => {
+  const disabled = cameraDisabled(env);
+  return disabled
+    ? {
+      class: "pseudo-disabled",
+      click: () => error(t(ToolTips.SELECT_A_CAMERA), {
+        title: t(Content.NO_CAMERA_SELECTED)
+      }),
+      title: t(Content.NO_CAMERA_SELECTED)
+    }
+    : { class: "", click: undefined, title: "" };
+};
+
+export enum Camera {
+  USB = "USB",
+  RPI = "RPI",
+  NONE = "NONE",
+}
+
+export const parseCameraSelection = (env: UserEnv): Camera => {
+  const camera = env["camera"]?.toUpperCase();
+  if (camera?.includes(Camera.NONE)) {
+    return Camera.NONE;
+  } else if (camera?.includes(Camera.RPI)) {
+    return Camera.RPI;
+  } else {
+    return Camera.USB;
+  }
+};
+
+const CAMERA_CHOICES = () => ([
+  { label: t("USB Camera"), value: Camera.USB },
+  { label: t("Raspberry Pi Camera"), value: Camera.RPI },
+  { label: t("None"), value: Camera.NONE },
+]);
+
+const CAMERA_CHOICES_DDI = () => {
+  const CHOICES = CAMERA_CHOICES();
+  return {
+    [CHOICES[0].value]: { label: CHOICES[0].label, value: CHOICES[0].value },
+    [CHOICES[1].value]: { label: CHOICES[1].label, value: CHOICES[1].value },
+    [CHOICES[2].value]: { label: CHOICES[2].label, value: CHOICES[2].value },
+  };
+};
+
+export class CameraSelection
+  extends React.Component<CameraSelectionProps, CameraSelectionState> {
+
+  state: CameraSelectionState = {
+    cameraStatus: ""
+  };
+
+  selectedCamera = (): DropDownItem =>
+    CAMERA_CHOICES_DDI()[parseCameraSelection(this.props.env)]
+
+  render() {
+    return <Highlight settingName={DeviceSetting.camera}>
+      <Row>
+        <Col xs={5}>
+          <label>
+            {t("CAMERA")}
+          </label>
+        </Col>
+        <Col xs={7}>
+          <FBSelect
+            allowEmpty={false}
+            list={CAMERA_CHOICES()}
+            selectedItem={this.selectedCamera()}
+            onChange={ddi =>
+              this.props.dispatch(this.props.saveFarmwareEnv("camera",
+                JSON.stringify(ddi.value)))}
+            extraClass={getModifiedClassNameSpecifyDefault(
+              this.selectedCamera().value, Camera.USB)} />
+        </Col>
+      </Row>
+    </Highlight>;
+  }
+}

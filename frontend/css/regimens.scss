@@ -1,0 +1,106 @@
+// Bulk Scheduler
+.bulk-scheduler {
+  &.page {
+    @media screen and (max-width: 768px) {
+      display: none;
+      margin-bottom: 3rem;
+      &.open {
+        &.inserting-item {
+          display: block;
+        }
+      }
+    }
+  }
+  label {
+    margin-top: 0 !important;
+  }
+  .week-grid {
+    margin-top: 2rem;
+  }
+  .week-grid-meta-buttons {
+    margin-top: 1rem;
+    text-align: right;
+    button {
+      float: none;
+      margin-left: 1rem;
+      margin-bottom: 1rem;
+    }
+  }
+  @media screen and (max-width: 974px) {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+  .fa-clock-o {
+    margin-left: 0.75rem;
+    color: $dark_gray;
+  }
+  input {
+    background-color: $white !important;
+  }
+}
+
+.bulk-scheduler-add {
+  margin: 1.5rem;
+}
+
+.bulk-scheduler-content {
+  margin-top: 1rem;
+}
+
+// Regimen Editor
+.regimen-day {
+  margin: 1.5rem 0;
+  margin-right: 10px;
+}
+
+.regimen-event {
+  position: relative;
+  background: $gray;
+  padding: 0.7rem;
+  border-radius: 3px;
+  min-height: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+.regimen-event-title {
+  color: $dark_gray;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.regimen-event-time {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.regimen-event-variable {
+  display: inline-block;
+  margin-right: 1.5rem;
+}
+
+.regimen-control {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.regimen-days-label {
+  margin-left: 50%;
+  margin-top: 2rem;
+}
+
+.open-bulk-scheduler-btn-wrapper {
+  margin: auto;
+  width: fit-content;
+  .open-bulk-scheduler-btn {
+    display: none;
+    @media screen and (max-width: 768px) {
+      display: block;
+      margin: auto;
+      float: none !important;
+    }
+  }
+}
+
+// Regimen List styles in sequences.scss
