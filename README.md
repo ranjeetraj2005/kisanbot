@@ -70,4 +70,3 @@ Thanks for your interest in internationalizing the FarmBot web app! To add trans
 [Raise an issue](https://github.com/FarmBot/Farmbot-Web-App/issues/new?title=Question%20about%20a%20TODO) if you have any questions.
 
 If you raise an issue indicating that you haven't followed the setup instructions, looked through past issues, or done a cursory internet search for basic help, expect the issue to be closed and we'll point you to the setup instructions. *Again, if you do not have at least intermediate Linux and Ruby experience, please use the hosted version of the web app at my.farm.bot.* Running a self-hosted server is not easy!
-
